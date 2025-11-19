@@ -4,37 +4,25 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Clona il repository da GitHub
                 checkout scm
             }
         }
 
         stage('Install dependencies') {
             steps {
-                // Installa tutte le librerie Python dal requirements.txt
-                bat 'pip install -r requirements.txt'
+                sh 'python3 -m pip install --user -r requirements.txt'
             }
         }
 
         stage('Run Selenium Test') {
             steps {
-                // Esegue lo script Selenium
-                bat 'python wikipedia_python.py'
-            }
-        }
-
-        stage('Check Python Version') {
-            steps {
-                // Controlla versione Python (utile per debugging)
-                bat 'python --version'
-                bat 'pip --version'
+                sh 'python3 wikipedia_python.py'
             }
         }
     }
 
     post {
         always {
-            // Archivia eventuali log o file generati
             archiveArtifacts artifacts: '**/*.log', allowEmptyArchive: true
         }
     }
