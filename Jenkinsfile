@@ -1,40 +1,54 @@
-C:\Users\ottav\PyCharmMiscProject\.venv\Scripts\python.exe C:\Users\ottav\PyCharmMiscProject\wikipedia_python.py 
-Esecuzione test Selenium: 2025-11-19 19:32:10.572770
-Traceback (most recent call last):
-  File "C:\Users\ottav\PyCharmMiscProject\.venv\Lib\site-packages\selenium\webdriver\common\driver_finder.py", line 64, in _binary_paths
-    raise ValueError(f"The path is not a valid file: {path}")
-ValueError: The path is not a valid file: /usr/bin/chromedriver
+pipeline {
+    agent any
 
-The above exception was the direct cause of the following exception:
+    environment {
+        VENV_DIR = "${WORKSPACE}/venv"
+    }
 
-Traceback (most recent call last):
-  File "C:\Users\ottav\PyCharmMiscProject\wikipedia_python.py", line 61, in <module>
-    run_selenium_test()
-    ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\ottav\PyCharmMiscProject\wikipedia_python.py", line 30, in run_selenium_test
-    driver = webdriver.Chrome(
-        service=Service("/usr/bin/chromedriver"),
-        options=options
-    )
-  File "C:\Users\ottav\PyCharmMiscProject\.venv\Lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 45, in __init__
-    super().__init__(
-    ~~~~~~~~~~~~~~~~^
-        browser_name=DesiredCapabilities.CHROME["browserName"],
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<3 lines>...
-        keep_alive=keep_alive,
-        ^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\ottav\PyCharmMiscProject\.venv\Lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 50, in __init__
-    if finder.get_browser_path():
-       ~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\ottav\PyCharmMiscProject\.venv\Lib\site-packages\selenium\webdriver\common\driver_finder.py", line 47, in get_browser_path
-    return self._binary_paths()["browser_path"]
-           ~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\ottav\PyCharmMiscProject\.venv\Lib\site-packages\selenium\webdriver\common\driver_finder.py", line 78, in _binary_paths
-    raise NoSuchDriverException(msg) from err
-selenium.common.exceptions.NoSuchDriverException: Message: Unable to obtain driver for chrome; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location
+    stages {
+        stage('Checkout SCM') {
+            steps {
+                git url: 'https://github.com/ottaviomarciello-sketch/selenium_ci_pipeline.git', branch: 'main'
+            }
+        }
 
+        stage('Setup Python Environment') {
+            steps {
+                sh '''
+                    python3 -m venv ${VENV_DIR}
+                    . ${VENV_DIR}/bin/activate
+                    pip install --upgrade pip
+                    pip install -r requirements.txt
+                '''
+            }
+        }
 
-Process finished with exit code 1
+        stage('Install Chromium') {
+            steps {
+                // Serve Chromium per Selenium
+                sh '''
+                    sudo apt-get update
+                    sudo apt-get install -y chromium-browser chromium-chromedriver
+                '''
+            }
+        }
+
+        stage('Run Selenium Test') {
+            steps {
+                sh '''
+                    . ${VENV_DIR}/bin/activate
+                    python wikipedia_python.py
+                '''
+            }
+        }
+    }
+
+    post {
+        always {
+            echo "Pipeline completata!"
+        }
+        failure {
+            echo "Errore nella pipeline!"
+        }
+    }
+}
