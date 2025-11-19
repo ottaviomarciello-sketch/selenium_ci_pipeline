@@ -1,27 +1,41 @@
 pipeline {
-    agent {
-        docker {
-            image 'selenium/standalone-chrome:latest'
-            args '-u root'  // serve per installare roba dentro
-        }
-    }
+    agent any
 
     stages {
-        stage('Setup Python') {
+        stage('Checkout') {
             steps {
-                sh '''
-                apt-get update
-                apt-get install -y python3 python3-pip
-                pip3 install --upgrade pip
-                pip3 install -r requirements.txt
-                '''
+                // Clona il repository da GitHub
+                checkout scm
+            }
+        }
+
+        stage('Install dependencies') {
+            steps {
+                // Installa tutte le librerie Python dal requirements.txt
+                bat 'pip install -r requirements.txt'
             }
         }
 
         stage('Run Selenium Test') {
             steps {
-                sh 'python3 wikipedia_python.py'
+                // Esegue lo script Selenium
+                bat 'python wikipedia_python.py'
             }
+        }
+
+        stage('Check Python Version') {
+            steps {
+                // Controlla versione Python (utile per debugging)
+                bat 'python --version'
+                bat 'pip --version'
+            }
+        }
+    }
+
+    post {
+        always {
+            // Archivia eventuali log o file generati
+            archiveArtifacts artifacts: '**/*.log', allowEmptyArchive: true
         }
     }
 }
