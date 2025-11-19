@@ -1,54 +1,36 @@
-# Base image: Debian slim per minor peso
-FROM python:3.13-slim
+# Base image con Python e Jenkins
+FROM jenkins/jenkins:lts
 
-# Aggiorna pacchetti e installa dipendenze necessarie per Chrome
-RUN apt-get update && apt-get install -y \
-    wget \
-    unzip \
-    curl \
-    gnupg \
-    ca-certificates \
-    fonts-liberation \
-    libnss3 \
-    libx11-xcb1 \
-    libxcomposite1 \
-    libxcursor1 \
-    libxdamage1 \
-    libxi6 \
-    libxtst6 \
-    libatk1.0-0 \
-    libatk-bridge2.0-0 \
-    libcups2 \
-    libdrm2 \
-    libxrandr2 \
-    libgbm1 \
-    libasound2 \
-    libpangocairo-1.0-0 \
-    libpango-1.0-0 \
-    libgtk-3-0 \
-    libxss1 \
-    libappindicator3-1 \
-    xdg-utils \
-    --no-install-recommends && \
-    rm -rf /var/lib/apt/lists/*
+# Passa a root per installare pacchetti
+USER root
 
-# Installa Chrome stabile
-RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - && \
-    echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list && \
-    apt-get update && apt-get install -y google-chrome-stable && \
-    rm -rf /var/lib/apt/lists/*
+# Aggiorna apt e installa Chromium + dipendenze
+RUN apt-get update && \
+    apt-get install -y \
+        chromium \
+        chromium-driver \
+        python3-pip \
+        python3-venv \
+        wget \
+        curl \
+        unzip \
+        gnupg2 \
+        ca-certificates \
+        && rm -rf /var/lib/apt/lists/*
 
-# Imposta variabili d'ambiente per Chrome
-ENV CHROME_BIN=/usr/bin/google-chrome
-ENV PATH="$PATH:/usr/local/bin"
+# Imposta Python 3 come default
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+RUN update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1
 
-# Installa pip e Selenium dependencies
-WORKDIR /app
-COPY requirements.txt .
-RUN python -m venv venv && . venv/bin/activate && pip install --upgrade pip && pip install -r requirements.txt
+# Installa librerie Python per Selenium
+RUN pip install --upgrade pip
+RUN pip install selenium webdriver-manager python-dotenv
 
-# Copia il codice Python
-COPY . .
+# Torna all'utente jenkins
+USER jenkins
 
-# Comando di default (puoi sostituire con il tuo script)
-CMD ["/bin/bash"]
+# Porta Jenkins
+EXPOSE 8080 50000
+
+# Entrypoint di default
+ENTRYPOINT ["/usr/bin/tini", "--", "/usr/local/bin/jenkins.sh"]
