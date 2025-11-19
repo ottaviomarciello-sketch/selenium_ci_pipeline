@@ -1,21 +1,49 @@
+# Base Jenkins LTS
 FROM jenkins/jenkins:lts
 
 USER root
 
-# Install Python + venv
-RUN apt-get update && \
-    apt-get install -y python3 python3-pip python3-venv curl unzip gnupg && \
-    apt-get clean
+# Aggiornamento e installazione pacchetti necessari
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip \
+    python3-venv \
+    wget \
+    unzip \
+    gnupg \
+    curl \
+    software-properties-common \
+    ca-certificates \
+    fonts-liberation \
+    libnss3 \
+    lsb-release \
+    xdg-utils \
+    && apt-get clean
 
-# Install Chromium + dipendenze
-RUN apt-get update && \
-    apt-get install -y chromium chromium-driver \
-        fonts-liberation libnss3 libx11-xcb1 libxcomposite1 libxcursor1 \
-        libxdamage1 libxi6 libxtst6 libatk1.0-0 libatk-bridge2.0-0 \
-        libdrm2 libxrandr2 libgbm1 libasound2 libpangocairo-1.0-0 \
-        libpango-1.0-0 libcups2 libdbus-1-3 libexpat1 libfontconfig1 \
-        libfreetype6 libxrender1 libxext6 libxfixes3 libxss1 libglib2.0-0 \
-        libjpeg62-turbo libpng16-16 wget && \
-    apt-get clean
+# Installazione di Google Chrome stabile
+RUN curl -fsSL https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /usr/share/keyrings/google-linux-signing-key.gpg \
+    && echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-linux-signing-key.gpg] http://dl.google.com/linux/chrome/deb/ stable main" \
+       > /etc/apt/sources.list.d/google-chrome.list \
+    && apt-get update && apt-get install -y google-chrome-stable \
+    && rm -rf /var/lib/apt/lists/*
 
+# Impostazioni ambiente
+ENV PATH="/usr/local/bin:$PATH"
+
+# Impostazione utente Jenkins
 USER jenkins
+
+# Directory di lavoro
+WORKDIR /var/jenkins_home
+
+# Copia eventuale requirements.txt nella build
+COPY requirements.txt .
+
+# Installazione Python packages (anche webdriver-manager)
+RUN python3 -m venv venv \
+    && . venv/bin/activate \
+    && pip install --upgrade pip \
+    && pip install -r requirements.txt
+
+# Comando di default
+CMD ["jenkins"]
