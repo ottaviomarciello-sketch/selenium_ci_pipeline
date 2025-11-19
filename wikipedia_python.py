@@ -13,12 +13,13 @@ def run_selenium_test():
 
     # Opzioni Chrome headless ottimizzate per container
     options = webdriver.ChromeOptions()
-    options.add_argument("--headless")  # modalità invisibile
-    options.add_argument("--no-sandbox")  # necessario in container Linux
-    options.add_argument("--disable-dev-shm-usage")  # evita errori di memoria
+    options.add_argument("--headless=new")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--disable-gpu")
-    options.add_argument("--log-level=3")  # riduce log verbose
-    options.add_argument("--window-size=1920,1080")  # headless ha spesso risoluzioni basse
+    options.add_argument("--remote-debugging-port=9222")
+    options.add_argument("--log-level=3")
+    options.add_argument("--window-size=1920,1080")
 
     # Inizializza ChromeDriver con WebDriverManager
     driver = webdriver.Chrome(
@@ -30,7 +31,7 @@ def run_selenium_test():
         # Vai su Wikipedia
         driver.get("https://www.wikipedia.org/")
 
-        # Clic su lingua italiana
+        # Clic lingua italiana
         WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.ID, "js-link-box-it"))
         ).click()
@@ -45,24 +46,24 @@ def run_selenium_test():
         except Exception as e:
             print("Opzione font-size non cliccabile:", e)
 
-        # Input di ricerca
+        # Input ricerca
         search_input = WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located((By.NAME, "search"))
         )
         search_input.send_keys("Python")
 
-        # Clic sul pulsante di ricerca
+        # Clic pulsante ricerca
         WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, "button.cdx-search-input__end-button"))
         ).click()
 
-        # Attendi caricamento titolo pagina
+        # Attendi titolo pagina
         page_title = WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located((By.ID, "firstHeading"))
         )
         print("Pagina caricata:", page_title.text)
 
-        # Trova link al sito ufficiale Python e clicca
+        # Trova link sito ufficiale Python
         python_link = WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located(
                 (By.XPATH, "//table[contains(@class,'infobox')]/tbody//tr[th[a[text()='Sito web']]]/td//a")
@@ -72,8 +73,6 @@ def run_selenium_test():
         try:
             python_link.click()
         except:
-            # fallback in headless per click JS
-            ActionChains(driver).move_to_element(python_link).perform()
             driver.execute_script("arguments[0].click();", python_link)
 
         print("Click su www.python.org eseguito!")
