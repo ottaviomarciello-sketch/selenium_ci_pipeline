@@ -18,8 +18,9 @@ def run_selenium_test():
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--disable-gpu")
     options.add_argument("--remote-debugging-port=9222")
-    options.add_argument("--log-level=3")
     options.add_argument("--window-size=1920,1080")
+    options.add_argument("--disable-software-rasterizer")  # importante in container
+
 
     # Inizializza ChromeDriver con WebDriverManager
     driver = webdriver.Chrome(
