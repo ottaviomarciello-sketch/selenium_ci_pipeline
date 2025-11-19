@@ -1,15 +1,13 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import StaleElementReferenceException
 from datetime import datetime
 import time
-from webdriver_manager.chrome import ChromeDriverManager
 
 def safe_click(driver, locator, retries=3):
-    """Evita StaleElementReferenceException cliccando più volte se necessario."""
+    """Clicca in sicurezza evitando StaleElementReferenceException."""
     for _ in range(retries):
         try:
             WebDriverWait(driver, 10).until(
@@ -23,31 +21,35 @@ def safe_click(driver, locator, retries=3):
 def run_selenium_test():
     print(f"Esecuzione test Selenium: {datetime.now()}")
 
-    # Opzioni Chrome headless per Linux/Jenkins
+    # Chrome options headless compatibili Docker/ARM
     options = webdriver.ChromeOptions()
-    options.add_argument("--headless=new")
+    options.add_argument("--headless=new")  # usa il nuovo headless
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--disable-gpu")
     options.add_argument("--window-size=1920,1080")
     options.add_argument("--log-level=3")
 
-    # Driver Chrome con webdriver-manager
-    driver = webdriver.Chrome(
-        service=Service(ChromeDriverManager().install()),
-        options=options
-    )
+    # Avvia Chrome direttamente (Docker image selenium/standalone-chromium ha già chromedriver)
+    driver = webdriver.Chrome(options=options)
 
     try:
+        # Vai su Wikipedia
         driver.get("https://www.wikipedia.org/")
+
+        # Clic lingua italiana
         safe_click(driver, (By.ID, "js-link-box-it"))
 
+        # Campo ricerca
         search_input = WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located((By.NAME, "search"))
         )
         search_input.send_keys("Python")
+
+        # Click sul pulsante di ricerca
         safe_click(driver, (By.CSS_SELECTOR, "button.cdx-search-input__end-button"))
 
+        # Attendi il titolo della pagina
         page_title = WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located((By.ID, "firstHeading"))
         )
@@ -56,6 +58,7 @@ def run_selenium_test():
     finally:
         print("Test completato, chiudo il browser.")
         driver.quit()
+
 
 if __name__ == "__main__":
     run_selenium_test()
