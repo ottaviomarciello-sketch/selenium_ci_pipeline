@@ -23,7 +23,7 @@ def safe_click(driver, locator, retries=3):
 def run_selenium_test():
     print(f"Esecuzione test Selenium: {datetime.now()}")
 
-    # Opzioni Chrome headless
+    # Opzioni Chrome headless per Linux/Jenkins
     options = webdriver.ChromeOptions()
     options.add_argument("--headless=new")
     options.add_argument("--no-sandbox")
@@ -39,26 +39,23 @@ def run_selenium_test():
     )
 
     try:
-        # Vai su Wikipedia
         driver.get("https://www.wikipedia.org/")
-
-        # Clic lingua italiana
         safe_click(driver, (By.ID, "js-link-box-it"))
 
-        # Campo ricerca
         search_input = WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located((By.NAME, "search"))
         )
         search_input.send_keys("Python")
-
-        # Click sul pulsante di ricerca
         safe_click(driver, (By.CSS_SELECTOR, "button.cdx-search-input__end-button"))
 
-        # Attendi il titolo della pagina
         page_title = WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located((By.ID, "firstHeading"))
         )
         print("Pagina caricata:", page_title.text)
 
     finally:
-        print("Test
+        print("Test completato, chiudo il browser.")
+        driver.quit()
+
+if __name__ == "__main__":
+    run_selenium_test()
