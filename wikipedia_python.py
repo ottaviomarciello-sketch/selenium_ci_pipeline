@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from datetime_t me import datetime
+from datetime_t import datetime
 
 def safe_click(driver, locator, retries=3):
     for _ in range(retries):
