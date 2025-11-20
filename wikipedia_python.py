@@ -34,7 +34,7 @@ def run_selenium_test():
     options.binary_location = "/usr/bin/chromium"  # Chromium già installato
 
     # ChromeDriver ARM64 compatibile con la versione di Chromium
-    service = Service(ChromeDriverManager(architecture="arm64").install())
+    service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=options)
 
     try:
