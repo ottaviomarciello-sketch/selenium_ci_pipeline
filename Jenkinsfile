@@ -1,24 +1,41 @@
 pipeline {
     agent any
 
+    environment {
+        VENV_DIR = "${WORKSPACE}/venv"
+    }
+
     stages {
+        stage('Setup virtual environment') {
+            steps {
+                sh '''
+                # Crea virtual environment
+                python3 -m venv ${VENV_DIR}
+
+                # Attiva virtual environment
+                . ${VENV_DIR}/bin/activate
+
+                # Aggiorna pip e installa dipendenze
+                pip install --upgrade pip
+                pip install selenium
+                '''
+            }
+        }
+
+        stage('Check workspace') {
+            steps {
+                sh 'ls -R ${WORKSPACE}'
+            }
+        }
+
         stage('Run Selenium test') {
             steps {
                 sh '''
-                pip install selenium
-                python <<EOF
-from selenium import webdriver
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+                # Attiva virtual environment
+                . ${VENV_DIR}/bin/activate
 
-driver = webdriver.Remote(
-    command_executor='http://localhost:4444/wd/hub',
-    desired_capabilities=DesiredCapabilities.CHROME
-)
-
-driver.get("https://www.wikipedia.org/")
-print(driver.title)
-driver.quit()
-EOF
+                # Esegui lo script Python
+                python ${WORKSPACE}/wikipedia_python.py
                 '''
             }
         }
