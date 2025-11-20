@@ -23,15 +23,16 @@ def run_selenium_test():
 
     # Chrome options headless compatibili Docker/ARM
     options = webdriver.ChromeOptions()
-    options.add_argument("--headless")  # usa il nuovo headless
+    options.binary_location = "/usr/bin/chromium"  # percorso di Chromium su Linux
+    options.add_argument("--headless=new")  # usa il nuovo headless mode
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--disable-gpu")
     options.add_argument("--window-size=1920,1080")
     options.add_argument("--log-level=3")
 
-    # Avvia Chrome direttamente (Docker image selenium/standalone-chromium ha già chromedriver)
-    driver = webdriver.Chrome(options=options)
+    # Avvia Chromium con ChromeDriver
+    driver = webdriver.Chrome(executable_path="/usr/bin/chromedriver", options=options)
 
     try:
         # Vai su Wikipedia
