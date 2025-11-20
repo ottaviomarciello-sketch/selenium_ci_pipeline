@@ -2,16 +2,16 @@ pipeline {
     agent any
 
     stages {
-        stage('Run Selenium Test') {
+        stage('Install dependencies') {
             steps {
-                sh 'python3 wikipedia_python.py'
+                bat 'pip install selenium webdriver-manager'
             }
         }
-    }
 
-    post {
-        always {
-            echo 'Pipeline completata!'
+        stage('Run Selenium test') {
+            steps {
+                bat 'python wikipedia_python.py'
+            }
         }
     }
 }
