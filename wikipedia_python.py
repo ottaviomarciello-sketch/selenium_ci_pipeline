@@ -25,7 +25,7 @@ def run_selenium_test():
 
     # Chrome options headless compatibili Docker/ARM
     options = webdriver.ChromeOptions()
-    options.add_argument("--headless=new")  # usa il nuovo headless
+    options.add_argument("--headless")  # usa il nuovo headless
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--disable-gpu")
