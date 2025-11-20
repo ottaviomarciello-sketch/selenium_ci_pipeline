@@ -2,6 +2,13 @@ pipeline {
     agent any
 
     stages {
+        stage('Check workspace') {
+            steps {
+                echo "Contenuto della cartella workspace:"
+                sh 'ls -R /var/jenkins_home/workspace/SeleniumTestPipeline/'
+            }
+        }
+
         stage('Setup virtual environment') {
             steps {
                 sh '''
@@ -17,7 +24,7 @@ pipeline {
             steps {
                 sh '''
                 . venv/bin/activate
-                python /var/jenkins_home/workspace/SeleniumTestPipeline/test_wikipedia.py
+                python /var/jenkins_home/workspace/SeleniumTestPipeline/wikipedia_pom/tests/test_wikipedia.py
                 '''
             }
         }
