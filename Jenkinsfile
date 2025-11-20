@@ -2,17 +2,23 @@ pipeline {
     agent any
 
     stages {
-        stage('Install dependencies') {
+        stage('Setup virtual environment') {
             steps {
-                // se vuoi installare librerie Python
-                sh 'pip install selenium webdriver-manager'
+                sh '''
+                python3 -m venv venv
+                source venv/bin/activate
+                pip install --upgrade pip
+                pip install selenium webdriver-manager
+                '''
             }
         }
 
         stage('Run Selenium test') {
             steps {
-                // esegue lo script Python
-                sh 'python3 /var/jenkins_home/workspace/SeleniumTestPipeline/test_wikipedia.py'
+                sh '''
+                source venv/bin/activate
+                python /var/jenkins_home/workspace/SeleniumTestPipeline/test_wikipedia.py
+                '''
             }
         }
     }
