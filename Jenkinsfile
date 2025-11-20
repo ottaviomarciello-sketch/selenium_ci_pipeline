@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = 'selenium/standalone-chromium:arm64'
+        DOCKER_IMAGE = 'selenium-arm64'
         TEST_SCRIPT = 'wikipedia_python.py'
     }
 
@@ -13,17 +13,20 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image (Optional)') {
+        stage('Build Docker Image') {
             steps {
-                sh 'docker build -t selenium-arm64 . || echo "Skipping custom build"'
+                sh 'docker build -t ${DOCKER_IMAGE} .'
             }
         }
 
-        stage('Run Selenium Test in Docker') {
+        stage('Run Selenium Test') {
             steps {
                 sh """
-                    docker run --rm -v \$PWD:/tests -w /tests ${DOCKER_IMAGE} \
-                    python3 ${TEST_SCRIPT}
+                    docker run --rm \
+                        -v \$PWD:/app \
+                        -w /app \
+                        ${DOCKER_IMAGE} \
+                        python3 ${TEST_SCRIPT}
                 """
             }
         }

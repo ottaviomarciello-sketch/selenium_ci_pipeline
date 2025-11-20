@@ -1,29 +1,23 @@
-FROM jenkins/jenkins:lts
+FROM python:3.10-slim
 
-USER root
+ENV DEBIAN_FRONTEND=noninteractive
 
-# Aggiorna apt e installa dipendenze + Chromium
+# Install Chrome ARM64
 RUN apt-get update && \
-    apt-get install -y \
-        chromium \
-        python3-pip \
-        python3-venv \
-        wget \
-        curl \
-        unzip \
-        gnupg2 \
-        ca-certificates \
-    && rm -rf /var/lib/apt/lists/*
+    apt-get install -y wget gnupg2 curl unzip && \
+    wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - && \
+    echo "deb [arch=arm64] http://dl.google.com/linux/chrome/deb/ stable main" \
+        > /etc/apt/sources.list.d/google-chrome.list && \
+    apt-get update && \
+    apt-get install -y google-chrome-stable && \
+    rm -rf /var/lib/apt/lists/*
 
-# Imposta Python 3 come default
-RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
-RUN update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1
+# Copy deps
+COPY requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt
 
-# Installa librerie Python per Selenium
-RUN pip install --upgrade pip
-RUN pip install selenium webdriver-manager python-dotenv
+# Add project
+COPY . /app
+WORKDIR /app
 
-# Torna a utente jenkins
-USER jenkins
-
-EXPOSE 8080 50000
+CMD ["python", "script.py"]
