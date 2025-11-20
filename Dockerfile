@@ -1,23 +1,27 @@
-FROM python:3.10-slim
+# Base Jenkins LTS
+FROM jenkins/jenkins:lts
 
+USER root
+
+# Imposta non interattivo
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install Chrome ARM64
+# Aggiorna e installa Python3, pip, wget, curl, unzip e Chrome
 RUN apt-get update && \
-    apt-get install -y wget gnupg2 curl unzip && \
+    apt-get install -y python3 python3-pip wget curl unzip gnupg2 && \
     wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - && \
-    echo "deb [arch=arm64] http://dl.google.com/linux/chrome/deb/ stable main" \
-        > /etc/apt/sources.list.d/google-chrome.list && \
+    echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list && \
     apt-get update && \
     apt-get install -y google-chrome-stable && \
     rm -rf /var/lib/apt/lists/*
 
-# Copy deps
+# Copia il requirements.txt e installa le dipendenze Python
 COPY requirements.txt /app/requirements.txt
-RUN pip install --no-cache-dir -r /app/requirements.txt
+RUN pip3 install --no-cache-dir -r /app/requirements.txt
 
-# Add project
+# Copia i tuoi script nel container
 COPY . /app
 WORKDIR /app
 
-CMD ["python", "script.py"]
+# Ritorna all'utente jenkins
+USER jenkins
