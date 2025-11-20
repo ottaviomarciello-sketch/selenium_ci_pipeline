@@ -1,30 +1,41 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Check workspace') {
-            steps {
-                echo "Contenuto della cartella workspace:"
-                sh 'ls -R /var/jenkins_home/workspace/SeleniumTestPipeline/'
-            }
-        }
+    environment {
+        VENV_DIR = "${WORKSPACE}/venv"
+    }
 
+    stages {
         stage('Setup virtual environment') {
             steps {
                 sh '''
-                python3 -m venv venv
-                . venv/bin/activate
+                # Crea virtual environment
+                python3 -m venv ${VENV_DIR}
+
+                # Attiva virtual environment
+                . ${VENV_DIR}/bin/activate
+
+                # Aggiorna pip e installa dipendenze
                 pip install --upgrade pip
                 pip install selenium webdriver-manager
                 '''
             }
         }
 
+        stage('Check workspace') {
+            steps {
+                sh 'ls -R ${WORKSPACE}'
+            }
+        }
+
         stage('Run Selenium test') {
             steps {
                 sh '''
-                . venv/bin/activate
-                python /var/jenkins_home/workspace/SeleniumTestPipeline/wikipedia_pom/tests/test_wikipedia.py
+                # Attiva virtual environment
+                . ${VENV_DIR}/bin/activate
+
+                # Esegui lo script Python
+                python ${WORKSPACE}/tests/test_wikipedia.py
                 '''
             }
         }
