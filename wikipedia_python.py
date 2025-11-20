@@ -2,9 +2,8 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.chrome.service import Service
 from selenium.common.exceptions import StaleElementReferenceException
-from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 from datetime import datetime
 import time
 
@@ -33,8 +32,8 @@ def run_selenium_test():
     options.add_argument("--log-level=3")
     options.binary_location = "/usr/bin/chromium"  # Chromium già installato
 
-    # ChromeDriver ARM64 compatibile con la versione di Chromium
-    service = Service(ChromeDriverManager().install())
+    # ChromeDriver già installato nel container
+    service = Service("/usr/bin/chromedriver")  # Assicurati che il path sia corretto
     driver = webdriver.Chrome(service=service, options=options)
 
     try:
@@ -62,7 +61,6 @@ def run_selenium_test():
     finally:
         print("Test completato, chiudo il browser.")
         driver.quit()
-
 
 if __name__ == "__main__":
     run_selenium_test()
