@@ -23,19 +23,18 @@ def safe_click(driver, locator, retries=3):
 def run_selenium_test():
     print(f"Esecuzione test Selenium: {datetime.now()}")
 
-    # Chrome options headless compatibili Docker/ARM
+    # Opzioni Chromium per container ARM64
     options = webdriver.ChromeOptions()
-    options.add_argument("--headless")  # usa il nuovo headless
+    options.add_argument("--headless=new")  # nuovo headless
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--disable-gpu")
     options.add_argument("--window-size=1920,1080")
     options.add_argument("--log-level=3")
+    options.binary_location = "/usr/bin/chromium"  # Chromium già installato
 
-    # Service per ChromeDriver (webdriver-manager gestisce il download)
-    service = Service(ChromeDriverManager().install())
-
-    # Avvia Chrome
+    # ChromeDriver ARM64 compatibile con la versione di Chromium
+    service = Service(ChromeDriverManager(architecture="arm64").install())
     driver = webdriver.Chrome(service=service, options=options)
 
     try:
@@ -47,7 +46,7 @@ def run_selenium_test():
 
         # Campo ricerca
         search_input = WebDriverWait(driver, 10).until(
-            EC.visibility_of_element_located((By.ID, "searchInput"))
+            EC.visibility_of_element_located((By.NAME, "search"))
         )
         search_input.send_keys("Python")
 
