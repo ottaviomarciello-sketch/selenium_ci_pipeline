@@ -35,7 +35,7 @@ pipeline {
                 . ${VENV_DIR}/bin/activate
 
                 # Esegui lo script Python
-                python ${WORKSPACE}/wikipedia_python.py
+                python ${WORKSPACE}/demoqa.py
                 '''
             }
         }
