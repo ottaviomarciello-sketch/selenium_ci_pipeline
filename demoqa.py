@@ -20,7 +20,7 @@ driver.maximize_window()
 driver.implicitly_wait(5)
 
 # ===== Credenziali da variabili ambiente (più sicuro)
-USERNAME = os.environ.get("DEMOQA_USER", "ottymrc")
+USERNAME = os.environ.get("DEMOQA_USER", "ottymrc1")
 PASSWORD = os.environ.get("DEMOQA_PASS", "Password.82!")
 
 try:
