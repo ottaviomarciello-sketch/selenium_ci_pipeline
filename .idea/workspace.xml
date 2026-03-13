@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="785f6cfe-e39d-4e69-886c-662113d73b85" name="Changes" comment="pippo 1234">
+    <list default="true" id="785f6cfe-e39d-4e69-886c-662113d73b85" name="Changes" comment="pippo 12345 ciaoooo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +101,23 @@
       <option name="project" value="LOCAL" />
       <updated>1773395079822</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="pippo 12345">
+      <option name="closed" value="true" />
+      <created>1773395260557</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1773395260557</updated>
+    </task>
+    <task id="LOCAL-00006" summary="pippo 12345 ciaoooo">
+      <option name="closed" value="true" />
+      <created>1773395343042</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1773395343042</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -117,6 +134,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="pippo" />
     <MESSAGE value="pippo 1234" />
-    <option name="LAST_COMMIT_MESSAGE" value="pippo 1234" />
+    <MESSAGE value="pippo 12345" />
+    <MESSAGE value="pippo 12345 ciaoooo" />
+    <option name="LAST_COMMIT_MESSAGE" value="pippo 12345 ciaoooo" />
   </component>
 </project>

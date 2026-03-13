@@ -2,41 +2,35 @@ pipeline {
     agent any
 
     environment {
-        VENV_DIR = "${WORKSPACE}/venv"
+        VENV_DIR = "${WORKSPACE}\\venv"
     }
 
     stages {
         stage('Setup virtual environment') {
             steps {
-                sh '''
-                # Crea virtual environment
-                python3 -m venv ${VENV_DIR}
+                bat """
+                REM Crea virtual environment
+                python -m venv "%VENV_DIR%"
 
-                # Attiva virtual environment
-                . ${VENV_DIR}/bin/activate
-
-                # Aggiorna pip e installa dipendenze
-                pip install --upgrade pip
-                pip install selenium
-                '''
+                REM Aggiorna pip e installa dipendenze
+                "%VENV_DIR%\\Scripts\\pip.exe" install --upgrade pip
+                "%VENV_DIR%\\Scripts\\pip.exe" install selenium
+                """
             }
         }
 
         stage('Check workspace') {
             steps {
-                sh 'ls -R ${WORKSPACE}'
+                bat 'dir /s "%WORKSPACE%"'
             }
         }
 
         stage('Run Selenium test') {
             steps {
-                sh '''
-                # Attiva virtual environment
-                . ${VENV_DIR}/bin/activate
-
-                # Esegui lo script Python
-                python ${WORKSPACE}/wikipedia_python.py
-                '''
+                bat """
+                REM Esegui lo script Python usando il venv
+                "%VENV_DIR%\\Scripts\\python.exe" "%WORKSPACE%\\wikipedia_python.py"
+                """
             }
         }
     }
