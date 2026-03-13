@@ -30,7 +30,7 @@ pipeline {
             steps {
                 bat """
                 REM Esegui lo script Python usando il venv
-                "%VENV_DIR%\\Scripts\\python.exe" "%WORKSPACE%\\wikipedia_python.py"
+                "%VENV_DIR%\\Scripts\\python.exe" "%WORKSPACE%\\demoqa.py"
                 """
             }
         }
