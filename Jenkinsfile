@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         VENV_DIR = "${WORKSPACE}\\venv"
-        PYTHON = "C:\\Users\\ottav\\AppData\\Local\\Programs\\Python\\Python313\\python.exe"
+
     }
 
     stages {
