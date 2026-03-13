@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="785f6cfe-e39d-4e69-886c-662113d73b85" name="Changes" comment="CIAO OTTAVIO">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -141,7 +140,31 @@
       <option name="project" value="LOCAL" />
       <updated>1773396272118</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="CIAO OTTAVIO">
+      <option name="closed" value="true" />
+      <created>1773396419655</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1773396419655</updated>
+    </task>
+    <task id="LOCAL-00011" summary="CIAO OTTAVIO">
+      <option name="closed" value="true" />
+      <created>1773396502191</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1773396502191</updated>
+    </task>
+    <task id="LOCAL-00012" summary="CIAO OTTAVIO">
+      <option name="closed" value="true" />
+      <created>1773396535441</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1773396535441</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
