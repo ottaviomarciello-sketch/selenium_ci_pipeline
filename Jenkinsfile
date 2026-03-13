@@ -4,7 +4,6 @@ pipeline {
     environment {
         VENV_DIR = "${WORKSPACE}\\venv"
         PYTHON = "C:/Users/ottav/AppData/Local/Programs/Python/Python313/python.exe"
-
     }
 
     stages {
@@ -12,7 +11,7 @@ pipeline {
             steps {
                 bat """
                 REM Crea virtual environment
-                python -m venv "%VENV_DIR%"
+                "%PYTHON%" -m venv "%VENV_DIR%"
 
                 REM Aggiorna pip e installa dipendenze
                 "%VENV_DIR%\\Scripts\\pip.exe" install --upgrade pip
