@@ -15,7 +15,7 @@ pipeline {
 
                 REM Aggiorna pip e installa dipendenze
                 "%VENV_DIR%\\Scripts\\pip.exe" install --upgrade pip
-                "%VENV_DIR%\\Scripts\\pip.exe" install selenium
+                "%VENV_DIR%\\Scripts\\pip.exe" install selenium webdriver-manager
                 """
             }
         }
