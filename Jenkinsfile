@@ -11,7 +11,7 @@ pipeline {
             steps {
                 bat """
                 "%PYTHON%" -m venv "%VENV_DIR%"
-                "%VENV_DIR%\\Scripts\\pip.exe" install --upgrade pip
+                "%VENV_DIR%\\Scripts\\python.exe" -m pip install --upgrade pip
                 "%VENV_DIR%\\Scripts\\pip.exe" install selenium webdriver-manager pytest pytest-html
                 """
             }
@@ -20,7 +20,7 @@ pipeline {
         stage('Run Selenium tests with pytest') {
             steps {
                 bat """
-                "%VENV_DIR%\\Scripts\\python.exe" -m pytest ^
+                "%VENV_DIR%\\Scripts\\python.exe" -m pytest test_demoqa.py ^
                     --junitxml=report.xml ^
                     --html=report.html --self-contained-html
                 """
