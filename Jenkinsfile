@@ -10,29 +10,33 @@ pipeline {
         stage('Setup virtual environment') {
             steps {
                 bat """
-                REM Crea virtual environment
                 "%PYTHON%" -m venv "%VENV_DIR%"
-
-                REM Aggiorna pip e installa dipendenze
                 "%VENV_DIR%\\Scripts\\pip.exe" install --upgrade pip
-                "%VENV_DIR%\\Scripts\\pip.exe" install selenium webdriver-manager
+                "%VENV_DIR%\\Scripts\\pip.exe" install selenium webdriver-manager pytest pytest-html
                 """
             }
         }
 
-        stage('Check workspace') {
-            steps {
-                bat 'dir /s "%WORKSPACE%"'
-            }
-        }
-
-        stage('Run Selenium test') {
+        stage('Run Selenium tests with pytest') {
             steps {
                 bat """
-                REM Esegui lo script Python usando il venv
-                "%VENV_DIR%\\Scripts\\python.exe" "%WORKSPACE%\\demoqa.py"
+                "%VENV_DIR%\\Scripts\\python.exe" -m pytest ^
+                    --junitxml=report.xml ^
+                    --html=report.html --self-contained-html
                 """
             }
+        }
+    }
+
+    post {
+        always {
+            junit 'report.xml'
+
+            publishHTML(target: [
+                reportDir: '.',
+                reportFiles: 'report.html',
+                reportName: 'HTML Test Report'
+            ])
         }
     }
 }
