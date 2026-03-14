@@ -9,6 +9,7 @@ from selenium.common.exceptions import TimeoutException
 from webdriver_manager.chrome import ChromeDriverManager
 import os
 
+
 # ===== Impostazioni
 options = Options()
 #options.add_argument("--headless")
@@ -33,6 +34,7 @@ try:
     ActionChains(driver).move_to_element(password).click(password).send_keys(PASSWORD).perform()
 
     login = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, "login")))
+
     ActionChains(driver).move_to_element(login).click(login).perform()
 
     try:
