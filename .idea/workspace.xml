@@ -1,8 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="785f6cfe-e39d-4e69-886c-662113d73b85" name="Changes" comment="CIAO OTTAVIO 12346">
-      <change beforePath="$PROJECT_DIR$/demoqa.py" beforeDir="false" afterPath="$PROJECT_DIR$/demoqa.py" afterDir="false" />
+    <list default="true" id="785f6cfe-e39d-4e69-886c-662113d73b85" name="Changes" comment="correzione">
+      <change afterPath="$PROJECT_DIR$/demoqa_duebrowser/pages/register_page.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demoqa_duebrowser/pytest.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demoqa_duebrowser/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demoqa_duebrowser/tests/conftest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demoqa_duebrowser/tests/test_auth.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demoqa_duebrowser/utils/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demoqa_form/conftest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demoqa_form/pages/dashboard_page.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demoqa_form/pages/login_page.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demoqa_form/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demoqa_form/tests/test_login.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demoqa_form/utils/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demoqa_pw.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/input_numeri_lista.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kivy.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libreria.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paziente.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/penna.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/playlist.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/playwright_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_demoqa/pages/login_page.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_demoqa/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_demoqa/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_demoqa/tests/conftest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_demoqa/tests/test_login.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_demoqa/utils/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/prova.qa.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rettangolo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_03_2026_10_03_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_03_2026_10_03__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PROVA.PY.py" beforeDir="false" afterPath="$PROJECT_DIR$/agenda.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ciao.py" beforeDir="false" afterPath="$PROJECT_DIR$/cittadino.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prova1.py" beforeDir="false" afterPath="$PROJECT_DIR$/cuffie.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tonio.py" beforeDir="false" afterPath="$PROJECT_DIR$/demoqa_duebrowser/pages/login_page.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,14 +79,195 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Python tests.Python tests in test_auth.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_demoqa.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_login.py (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_login.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest in bin.executor&quot;: &quot;Run&quot;,
+    &quot;Python.agenda.executor&quot;: &quot;Run&quot;,
+    &quot;Python.conftest.executor&quot;: &quot;Run&quot;,
+    &quot;Python.cuffie.executor&quot;: &quot;Run&quot;,
+    &quot;Python.demoqa.executor&quot;: &quot;Run&quot;,
+    &quot;Python.demoqa_pw.executor&quot;: &quot;Run&quot;,
+    &quot;Python.kivy.executor&quot;: &quot;Run&quot;,
+    &quot;Python.login_page (1).executor&quot;: &quot;Debug&quot;,
+    &quot;Python.login_page.executor&quot;: &quot;Run&quot;,
+    &quot;Python.playwright.executor&quot;: &quot;Run&quot;,
+    &quot;Python.playwright_test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.prova.executor&quot;: &quot;Run&quot;,
+    &quot;Python.rettangolo.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test_demoqa.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test_playwright.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/GitHub/selenium_ci_pipeline&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\GitHub\selenium_ci_pipeline\project_complete\tests" />
+      <recent name="C:\GitHub\selenium_ci_pipeline\project_complete\utils" />
+      <recent name="C:\GitHub\selenium_ci_pipeline\project_complete\fixture" />
+      <recent name="C:\GitHub\selenium_ci_pipeline\project_complete\pages" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.kivy">
+    <configuration name="agenda" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="selenium_ci_pipeline" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/agenda.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="cuffie" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="selenium_ci_pipeline" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cuffie.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="kivy" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="selenium_ci_pipeline" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/kivy.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="libreria" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="selenium_ci_pipeline" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="C:\GitHub\selenium_ci_pipeline\libreria.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="rettangolo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="selenium_ci_pipeline" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/rettangolo.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest in bin" type="tests" factoryName="py.test" nameIsGenerated="true">
+      <module name="selenium_ci_pipeline" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.13 (PyCharmMiscProject)" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="RUN_TOOL" value="" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.agenda" />
+      <item itemvalue="Python.cuffie" />
+      <item itemvalue="Python.kivy" />
+      <item itemvalue="Python.rettangolo" />
+      <item itemvalue="Python.libreria" />
+      <item itemvalue="Python tests.pytest in bin" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.kivy" />
+        <item itemvalue="Python.agenda" />
+        <item itemvalue="Python.cuffie" />
+        <item itemvalue="Python.rettangolo" />
+        <item itemvalue="Python.libreria" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -244,7 +460,63 @@
       <option name="project" value="LOCAL" />
       <updated>1773398770674</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="correzione">
+      <option name="closed" value="true" />
+      <created>1773398969949</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1773398969949</updated>
+    </task>
+    <task id="LOCAL-00024" summary="correzione">
+      <option name="closed" value="true" />
+      <created>1773399020033</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1773399020033</updated>
+    </task>
+    <task id="LOCAL-00025" summary="correzione">
+      <option name="closed" value="true" />
+      <created>1773399094988</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1773399094988</updated>
+    </task>
+    <task id="LOCAL-00026" summary="correzione">
+      <option name="closed" value="true" />
+      <created>1773509929609</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1773509929609</updated>
+    </task>
+    <task id="LOCAL-00027" summary="correzione">
+      <option name="closed" value="true" />
+      <created>1773510953706</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1773510953706</updated>
+    </task>
+    <task id="LOCAL-00028" summary="correzione">
+      <option name="closed" value="true" />
+      <created>1773511235572</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1773511235572</updated>
+    </task>
+    <task id="LOCAL-00029" summary="correzione">
+      <option name="closed" value="true" />
+      <created>1773511516917</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1773511516917</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -265,6 +537,7 @@
     <MESSAGE value="pippo 12345 ciaoooo" />
     <MESSAGE value="CIAO OTTAVIO" />
     <MESSAGE value="CIAO OTTAVIO 12346" />
-    <option name="LAST_COMMIT_MESSAGE" value="CIAO OTTAVIO 12346" />
+    <MESSAGE value="correzione" />
+    <option name="LAST_COMMIT_MESSAGE" value="correzione" />
   </component>
 </project>

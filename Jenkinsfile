@@ -1,8 +1,10 @@
 pipeline {
-    agent any
+    agent any // Usa qualsiasi agente Jenkins disponibile (macchina/worker)
 
     environment {
+        // Cartella del virtual environment Python (dentro workspace Jenkins)
         VENV_DIR = "${WORKSPACE}\\venv"
+         // Percorso dell'interprete Python installato sulla macchina
         PYTHON = "C:/Users/ottav/AppData/Local/Programs/Python/Python313/python.exe"
     }
 
@@ -10,7 +12,7 @@ pipeline {
         stage('Setup virtual environment') {
             steps {
                 bat """
-                "%PYTHON%" -m venv "%VENV_DIR%"
+                "%PYTHON%" -m venv "%VENV_DIR%" 
                 "%VENV_DIR%\\Scripts\\python.exe" -m pip install --upgrade pip
                 "%VENV_DIR%\\Scripts\\pip.exe" install selenium webdriver-manager pytest pytest-html
                 """
