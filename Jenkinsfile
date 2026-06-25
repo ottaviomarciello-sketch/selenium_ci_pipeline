@@ -5,7 +5,7 @@ pipeline {
         // Cartella del virtual environment Python (dentro workspace Jenkins)
         VENV_DIR = "${WORKSPACE}\\venv"
          // Percorso dell'interprete Python installato sulla macchina
-        PYTHON = "C:\Users\ottav\AppData\Local\Microsoft\WindowsApps\python.exe"
+        PYTHON = "C:/Users/ottav/AppData/Local/Programs/Python/Python313-arm64/python.exe"
     }
 
     stages {
