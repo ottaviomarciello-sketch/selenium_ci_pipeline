@@ -5,7 +5,7 @@ pipeline {
         // Cartella del virtual environment Python (dentro workspace Jenkins)
         VENV_DIR = "${WORKSPACE}\\venv"
          // Percorso dell'interprete Python installato sulla macchina
-        PYTHON = "C:/Users/ottav/AppData/Local/Programs/Python/Python313/python.exe"
+        PYTHON = "C:/Users/ottav/AppData/Local/Microsoft/WindowsApps/PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe"
     }
 
     stages {
@@ -22,7 +22,7 @@ pipeline {
         stage('Run Selenium tests with pytest') {
             steps {
                 bat """
-                "%VENV_DIR%\\Scripts\\python.exe" -m pytest test_demoqa.py ^
+                "%VENV_DIR%\\Scripts\\python.exe" -m pytest test_demoqa.py Z^
                     --junitxml=report.xml ^
                     --html=report.html --self-contained-html
                 """
